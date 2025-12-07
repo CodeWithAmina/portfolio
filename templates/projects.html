@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="projects-header">
+    <h1>My Projects</h1>
+    <p class="lead">A collection of the major academic and personal projects I have built.</p>
+</section>
+
+<section class="projects-grid">
+
+    <!-- Project 1 -->
+    <article class="project-card">
+        <div class="card-icon">💸</div>
+        <div class="project-content">
+            <h3>Tyla – Take Your Loan Anywhere</h3>
+            <p>
+                A mini project developed using PHP that allows users to apply for loans
+                online from anywhere. The system includes loan application, status tracking,
+                and admin management panel.
+            </p>
+            <div class="card-tags">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML/CSS</span>
+            </div>
+        </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project-card">
+        <div class="card-icon">🏃‍♂️</div>
+        <div class="project-content">
+            <h3>Athlete Coach </h3>
+            <p>
+                A web platform that connects athletes, coaches,
+                physiotherapists, and admins. It helps manage sessions, injuries,
+                feedback, progress reports, and communication.
+            </p>
+            <div class="card-tags">
+                <span>Python</span>
+                <span>Django</span>
+                <span>SQL</span>
+            </div>
+        </div>
+    </article>
+
+</section>
+
+{% endblock %}
