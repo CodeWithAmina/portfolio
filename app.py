@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import ai_helper
 
 app = Flask(__name__)
 
@@ -22,5 +23,19 @@ def contact():
 def resume():
     return render_template('resume.html')
 
+@app.route('/ai-assistant', methods=['GET', 'POST'])
+def ai_assistant():
+    response = None
+    prompt = None
+    if request.method == 'POST':
+        prompt = request.form.get('prompt')
+        if prompt:
+            # Use the library functions
+            raw_response = ai_helper.get_response(prompt)
+            response = ai_helper.format_response(raw_response)
+    
+    return render_template('ai_assistant.html', response=response, prompt=prompt)
+
 if __name__ == "__main__":
     app.run(debug=True)
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Portfolio - Amina Muhammed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    
+</head>
+
+<body>
+
+    <nav>
+        <div class="container">
+            <h2>Amina</h2>
+            <div>
+                <a href="/">Home</a>
+                <a href="/projects">Projects</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+  <h2>Resume</h2>
+
+  <section>
+    <h3>Profile</h3>
+    <p>Detail-oriented developer with experience building web applications using Flask. Comfortable working across the stack to deliver production-ready features.</p>
+  </section>
+
+  <section>
+    <h3>Education</h3>
+    <p>BSc Computer Science — Example University, 2024</p>
+  </section>
+
+  <section>
+    <h3>Skills</h3>
+    <ul>
+      <li>Python, Flask, JavaScript</li>
+      <li>REST APIs, SQL, basic Docker</li>
+      <li>Git, testing basics, deployment</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Selected Projects</h3>
+    <div class="cards">
+      
+    </div>
+  </section>
+
+  <section>
+    <h3>Contact</h3>
+    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+  </section>
+
+
+    </div>
+
+    <footer>
+        © 2025 Amina Muhammed. Portfolio Website.
+    </footer>
+
+</body>
+
+</html>
