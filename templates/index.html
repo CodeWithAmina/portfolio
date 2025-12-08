@@ -4,7 +4,7 @@
 <section class="hero">
   <div class="hero-content">
     <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Amina Muhammed" class="profile-img">
-    <h1>Hello, I'm Amina Muhammed</h1>
+    <h1>Hello, I'm <span class="gradient-text"></span>Amina Muhammed</span></h1>
     <p class="lead">
       I am a passionate MCA student and Full Stack Developer. I specialize in building scalable web applications using
       Python, Flask, and efficient SQL databases.
@@ -12,7 +12,7 @@
     </p>
     <p class="social-buttons">
       <a class="btn" href="https://github.com/aminamuhammed" target="_blank">GitHub</a>
-      <a class="btn outline" href="https://linkedin.com/in/aminamuhammed" target="_blank">LinkedIn</a>
+      <a class="btn outline" href="https://www.linkedin.com/feed/" target="_blank">LinkedIn</a>
       <a class="btn outline" href="{{ url_for('contact') }}">Contact Me</a>
     </p>
   </div>
