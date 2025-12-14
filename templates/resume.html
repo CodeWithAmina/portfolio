@@ -1,43 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Resume</h2>
+<h2>Resume</h2>
+<div style="margin-bottom: 20px;">
+  <a href="{{ url_for('static', filename='resume.pdf') }}" download class="btn">Download PDF</a>
+</div>
 
-  <section>
-    <h3>Profile</h3>
-    <p>Detail-oriented developer with experience building web applications using Flask. Comfortable working across the stack to deliver production-ready features.</p>
-  </section>
 
-  <section>
-    <h3>Education</h3>
-    <p>BSc Computer Science — Example University, 2024</p>
-  </section>
-
-  <section>
-    <h3>Skills</h3>
-    <ul>
-      <li>Python, Flask, JavaScript</li>
-      <li>REST APIs, SQL, basic Docker</li>
-      <li>Git, testing basics, deployment</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Selected Projects</h3>
-    <div class="cards">
-      {% for p in projects %}
-        <article class="card">
-          <h4>{{ p.title }}</h4>
-          <p>{{ p.summary }}</p>
-          <p class="muted">Tech: {{ p.tech | join(', ') }}</p>
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section>
-    <h3>Contact</h3>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-  </section>
 
 {% endblock %}
