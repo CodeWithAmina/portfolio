@@ -1,22 +1,44 @@
 {% extends 'base.html' %}
 
+{% block title %}Contact — Amina Muhammed{% endblock %}
+{% block description %}Contact Amina Muhammed about software development opportunities, collaborations, and projects.{% endblock %}
+
 {% block content %}
-  <h2>Contact</h2>
-  <form method="post" action="{{ url_for('contact') }}" class="contact-form">
-    <label for="name">Name</label>
-    <input id="name" name="name" required>
+<section class="page-hero container contact-hero">
+  <p class="section-kicker">Contact</p>
+  <h1>Have something<br><span class="serif-accent">in mind?</span></h1>
+  <p>For opportunities, project conversations, or a simple hello, I’d be glad to hear from you.</p>
+</section>
 
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" required>
-
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="6" required></textarea>
-
-    <div class="form-actions">
-      <button class="btn" type="submit">Send message</button>
+<section class="section container contact-layout">
+  <div class="contact-details">
+    <p class="section-kicker">Find me here</p>
+    <a class="contact-email" href="mailto:aminamuhammed9060@gmail.com">aminamuhammed9060<br>@gmail.com <span aria-hidden="true">↗</span></a>
+    <div class="contact-meta">
+      <p><span>Location</span>Kerala, India</p>
+      <p><span>Elsewhere</span><a href="https://github.com/aminamuhammed" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></p>
+      <p><span>Connect</span><a href="https://linkedin.com/in/aminamuhammed" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></p>
     </div>
-  </form>
+  </div>
 
-  <p class="note">Tip: For local testing without SMTP, set no mail env vars — the message will print to the console.</p>
+  <div class="contact-form-wrap">
+    <p class="section-kicker">Send a message</p>
+    {% if form_message %}
+    <p class="form-feedback {% if form_error %}form-feedback-error{% else %}form-feedback-success{% endif %}" role="status">{{ form_message }}</p>
+    {% endif %}
+    <form method="post" action="{{ url_for('contact') }}" class="contact-form">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
 
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+
+      <label for="message">How can I help?</label>
+      <textarea id="message" name="message" rows="5" maxlength="5000" required></textarea>
+
+      <button class="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="form-note">Messages are delivered by email when SMTP is configured. Without SMTP settings, they’re logged to the app console for local development.</p>
+  </div>
+</section>
 {% endblock %}

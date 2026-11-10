@@ -1,30 +1,34 @@
-# Hosting on Render
+# Deploying on Render
 
-I have prepared your project for deployment on [Render](https://render.com/).
+The repository includes a Render Blueprint in `render.yaml`. It builds the Flask app, starts Gunicorn on Render's assigned port, and checks `/` for service health.
 
-## Prerequisites
-1.  **GitHub Account**: Ensure you have a GitHub account.
-2.  **Render Account**: Sign up at dashboard.render.com using your GitHub account.
+## First deployment
 
-## Steps
+1. Push the project to the `main` branch on GitHub:
 
-### 1. Push Code to GitHub
-Open your terminal in this project folder and run:
-```bash
-git push origin main
-```
-*(If you haven't set up the remote origin yet, you need to create a repository on GitHub and follow the instructions to push an existing repository)*.
+   ```powershell
+   git add app.py requirements.txt render.yaml README.md DEPLOY_INSTRUCTIONS.md static templates build
+   git commit -m "Prepare portfolio for Render deployment"
+   git push origin main
+   ```
 
-### 2. Deploy on Render
-1.  Log in to your **Render Dashboard**.
-2.  Click **New +** and select **Blueprint**.
-3.  Connect your GitHub repository.
-4.  Render will automatically detect the `render.yaml` file I created.
-5.  Click **Apply** or **Create Service**.
+   Do not add local credentials or `.env` files.
 
-That's it! Render will:
-- Install dependencies from `requirements.txt`.
-- Install your local `ai_helper_lib`.
-- Start the app using `gunicorn`.
+2. Sign in at [Render](https://dashboard.render.com/), choose **New → Blueprint**, and connect `CodeWithAmina/portfolio`.
+3. Review the `portfolio-amina` web service from `render.yaml` and choose **Apply**.
+4. Wait for the first deployment to finish, then open the service's `onrender.com` URL.
 
-Your website will be live at a URL like `https://portfolio-amina.onrender.com`.
+Render can automatically redeploy from `main` after the Blueprint service is created.
+
+## Contact email
+
+For contact form email delivery, add these environment variables in the Render service's **Environment** settings:
+
+- `MAIL_SERVER`
+- `MAIL_PORT` (`587` for STARTTLS, or `465` for implicit TLS)
+- `MAIL_USERNAME`
+- `MAIL_PASSWORD`
+- `FROM_EMAIL`
+- `TO_EMAIL`
+
+Save changes to trigger a redeploy. Without SMTP configuration, the live contact form does not log submitted message contents; it asks visitors to email directly. SMTP credentials belong only in Render's environment settings, never in the repository.

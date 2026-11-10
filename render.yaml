@@ -3,7 +3,8 @@ services:
     name: portfolio-amina
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10.0
+        value: 3.12.12

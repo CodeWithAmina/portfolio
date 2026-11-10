@@ -1,13 +1,13 @@
 # Portfolio (Flask)
 
-This is a simple personal portfolio and online resume built with Flask. It includes:
+This is a personal portfolio and online resume built with Flask. It includes:
 
-- About / Education & Skills
-- Projects / Achievements
-- Contact form (sends email via SMTP or prints to console for local testing)
-- Light / Dark theme and alert UI
+- Responsive home, about, education, and skills pages
+- Project cards for AI, Android, web, and IoT work
+- Resume preview and PDF download (`static/resume.pdf`)
+- Contact form (SMTP delivery when configured; console logging for local development)
 
-Quick start (Windows PowerShell)
+## Quick start (Windows PowerShell)
 
 1. Create a virtualenv and install dependencies:
 
@@ -29,7 +29,7 @@ $env:TO_EMAIL='your.receiving.email@example.com'
 $env:SECRET_KEY='replace-with-a-secure-secret'
 ```
 
-If SMTP vars are not set, submitted messages will be printed to the server console (safe for local testing).
+If no SMTP vars are set, submitted messages will be printed to the server console only in local debug mode. Configure all SMTP vars in Render's environment settings for live email delivery; production submissions are not logged when SMTP is unavailable.
 
 3. Run the app:
 

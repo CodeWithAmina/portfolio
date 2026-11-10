@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
+{% block title %}Resume — Amina Muhammed{% endblock %}
+{% block description %}View or download Amina Muhammed’s resume.{% endblock %}
+
 {% block content %}
-<h2>Resume</h2>
-<div style="margin-bottom: 20px;">
-  <a href="{{ url_for('static', filename='resume.pdf') }}" download class="btn">Download PDF</a>
-</div>
-
-
-
+<section class="page-hero container resume-hero">
+  <p class="section-kicker">Resume</p>
+  <h1>A closer look at<br><span class="serif-accent">my journey.</span></h1>
+  <p>Education, projects, and the skills I’m continuing to grow.</p>
+  <a class="button button-primary" href="{{ url_for('static', filename='resume.pdf') }}" download>Download resume <span aria-hidden="true">↓</span></a>
+</section>
+<section class="container resume-preview-section">
+  <div class="resume-preview-heading">
+    <p class="section-kicker">Preview</p>
+    <a class="text-link" href="{{ url_for('static', filename='resume.pdf') }}" target="_blank" rel="noopener noreferrer">Open PDF <span aria-hidden="true">↗</span></a>
+  </div>
+  <iframe class="resume-preview" src="{{ url_for('static', filename='resume.pdf') }}" title="Amina Muhammed’s resume"></iframe>
+  <p class="form-note">To update this resume, replace <code>static/resume.pdf</code> with the latest PDF.</p>
+</section>
 {% endblock %}

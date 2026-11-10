@@ -1,0 +1,36 @@
+<div class="project-grid">
+  {% for project in projects %}
+  <article class="project-card project-{{ project.theme }}">
+    <div class="project-art" aria-hidden="true">
+      <span class="art-label">{{ project.art_label }}</span>
+      <span class="art-symbol">{{ project.symbol }}</span>
+      <span class="art-index">PROJECT {{ '%02d'|format(loop.index) }}</span>
+    </div>
+    <div class="project-body">
+      <p class="project-category">{{ project.category }}</p>
+      <h3>{{ project.name }}</h3>
+      <p class="project-description">{{ project.description }}</p>
+      <ul class="tag-list project-tags" aria-label="Technologies">
+        {% for technology in project.technologies %}<li>{{ technology }}</li>{% endfor %}
+      </ul>
+      <details class="project-details">
+        <summary>View project details <span aria-hidden="true">+</span></summary>
+        <ul class="feature-list">
+          {% for feature in project.features %}<li>{{ feature }}</li>{% endfor %}
+        </ul>
+      </details>
+      <div class="project-links">
+        {% if project.github %}
+        <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        {% endif %}
+        {% if project.demo %}
+        <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">↗</span></a>
+        {% endif %}
+        {% if not project.github and not project.demo %}
+        <span class="link-note">Repository &amp; demo links not published</span>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>

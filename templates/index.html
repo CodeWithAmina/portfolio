@@ -1,89 +1,99 @@
 {% extends 'base.html' %}
 
+{% block title %}Amina Muhammed — Full Stack Developer{% endblock %}
+{% block description %}Meet Amina Muhammed, an MCA student and aspiring full stack developer interested in Python, web applications, and AI.{% endblock %}
+
 {% block content %}
-<section class="hero">
-  <div class="hero-content">
-    <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Amina Muhammed" class="profile-img">
-    <h1>Hello, I'm <span class="gradient-text"></span>Amina Muhammed</span></h1>
-    <p class="lead">
-      I am a passionate MCA student and Full Stack Developer. I specialize in building scalable web applications using
-      Python, Flask, and efficient SQL databases.
-      I love turning complex problems into simple, beautiful, and intuitive designs.
+<section class="hero container">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="eyebrow-line"></span> MCA student · Kerala, India</p>
+    <h1>Hi, I’m<br><span class="serif-accent">Amina Muhammed.</span></h1>
+    <p class="hero-statement">Building digital experiences<br class="desktop-break"> through code.</p>
+    <p class="hero-description">
+      I’m a final-semester MCA student and aspiring software developer, creating practical web and AI projects while
+      growing my skills in full stack development.
     </p>
-    <p class="social-buttons">
-      <a class="btn" href="https://github.com/aminamuhammed" target="_blank">GitHub</a>
-      <a class="btn outline" href="https://www.linkedin.com/feed/" target="_blank">LinkedIn</a>
-      <a class="btn outline" href="{{ url_for('contact') }}">Contact Me</a>
-    </p>
-  </div>
-</section>
-
-<section class="about-summary">
-  <h2>About Me</h2>
-  <p>
-    My journey started with a strong foundation in Computer Applications (BCA) and has grown into a deep love for
-    backend logic and frontend aesthetics.
-    Currently pursuing my Master's at Rajagiri College, I am constantly learning new technologies.
-    When I'm not coding, I enjoy exploring UI/UX trends and optimizing database queries.
-  </p>
-
-  <div class="education-skills-container">
-    <div class="education-block">
-      <h3>Education</h3>
-      <ul class="education-list">
-        <li>
-          <strong>MCA</strong> (Pursuing)<br>
-          <span class="text-muted">Rajagiri College</span>
-        </li>
-        <li>
-          <strong>BCA</strong><br>
-          <span class="text-muted">KMEA College of Arts and Science</span>
-        </li>
-      </ul>
+    <div class="hero-actions">
+      <a class="button button-primary" href="{{ url_for('projects') }}">Explore my work <span aria-hidden="true">↗</span></a>
+      <a class="button button-secondary" href="{{ url_for('static', filename='resume.pdf') }}" download>Download resume <span aria-hidden="true">↓</span></a>
     </div>
-
-    <div class="skills-block">
-      <h3>Skills</h3>
-      <ul class="tech-list">
-        <li>Python</li>
-        <li>Flask</li>
-        <li>HTML / CSS</li>
-        <li>SQL (MySQL)</li>
-        <li>Git & GitHub</li>
-        <li>Problem Solving</li>
-      </ul>
+    <div class="hero-socials">
+      <a href="https://github.com/aminamuhammed" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="https://linkedin.com/in/aminamuhammed" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="mailto:aminamuhammed9060@gmail.com">Email <span aria-hidden="true">↗</span></a>
     </div>
   </div>
-</section>
-
-<section class="features">
-  <h2>Projects & Achievements</h2>
-  <div class="cards">
-    <article class="card">
-      <div class="card-icon">🏃‍♂️</div>
-      <h3>Athlete Coach</h3>
-      <p>A comprehensive sports training management system. Connects athletes with coaches and physios to track
-        performance, injuries, and training sessions in real-time.</p>
-      <div class="card-tags">
-        <span>Python</span>
-        <span>Django</span>
-        <span>SQL</span>
+  <div class="hero-portrait">
+    <div class="portrait-frame">
+      <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Portrait of Amina Muhammed">
+      <div class="portrait-caption">
+        <span class="availability-dot"></span>
+        <span>Curious by nature.<br>Developer in progress.</span>
       </div>
-
-    </article>
-    <article class="card">
-      <div class="card-icon">💸</div>
-      <h3>Tyla (Loan System)</h3>
-      <p>"Take Your Loan Anywhere" - A PHP-based web application streamlining the loan application process with admin
-        approval workflows and status tracking.</p>
-      <div class="card-tags">
-        <span>PHP</span>
-        <span>MySQL</span>
-        <span>HTML/CSS</span>
-      </div>
-
-    </article>
+    </div>
+    <span class="portrait-index" aria-hidden="true">01 / 04</span>
+    <span class="portrait-orbit orbit-one" aria-hidden="true"></span>
+    <span class="portrait-orbit orbit-two" aria-hidden="true"></span>
   </div>
 </section>
 
+<section class="intro-strip">
+  <div class="container intro-strip-inner">
+    <span class="section-kicker">A little about me</span>
+    <p>From computer applications to thoughtful software, I enjoy turning ideas into useful, human-centered products.</p>
+    <a class="text-link" href="{{ url_for('about') }}">More about me <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<section class="section container skills-section" id="skills">
+  <div class="section-heading">
+    <div><p class="section-kicker">The toolkit</p><h2>Skills I’m building with</h2></div>
+    <p class="section-aside">A growing toolkit, grounded in hands-on project work.</p>
+  </div>
+  <div class="skill-grid">
+    {% for category in skill_categories %}
+    <article class="skill-group">
+      <span class="skill-number">{{ '%02d'|format(loop.index) }}</span>
+      <h3>{{ category.name }}</h3>
+      <ul class="tag-list">
+        {% for skill in category.skills %}<li>{{ skill }}</li>{% endfor %}
+      </ul>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section projects-section">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="section-kicker">Selected work</p><h2>Projects with a purpose</h2></div>
+      <a class="text-link" href="{{ url_for('projects') }}">All projects <span aria-hidden="true">↗</span></a>
+    </div>
+    {% include '_project_cards.html' %}
+  </div>
+</section>
+
+<section class="section container education-preview">
+  <div class="section-heading">
+    <div><p class="section-kicker">Learning journey</p><h2>Education</h2></div>
+    <a class="text-link" href="{{ url_for('about') }}">About me <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="education-row">
+    <span class="education-marker" aria-hidden="true">01</span>
+    <div><h3>Master of Computer Applications</h3><p>Rajagiri College of Social Sciences, Kalamassery · Final semester</p></div>
+    <span class="education-subject">MCA</span>
+  </div>
+  <div class="education-row">
+    <span class="education-marker" aria-hidden="true">02</span>
+    <div><h3>Bachelor of Computer Applications</h3><p>KMEA College of Arts and Science, Pukkattupady</p></div>
+    <span class="education-subject">BCA</span>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div><p class="section-kicker">Have a project or opportunity?</p><h2>Let’s make something<br>that matters.</h2></div>
+    <a class="button button-light" href="{{ url_for('contact') }}">Get in touch <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
 {% endblock %}

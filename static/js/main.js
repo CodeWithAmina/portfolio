@@ -1,28 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Theme handling
-  const root = document.documentElement;
-  const toggle = document.getElementById('theme-toggle');
+  const toggle = document.querySelector('.menu-toggle');
+  const navigation = document.getElementById('primary-navigation');
 
-  function applyTheme(t) {
-    if (t === 'dark') root.classList.add('theme-dark'); else root.classList.remove('theme-dark');
-    localStorage.setItem('theme', t);
+  if (!toggle || !navigation) return;
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    navigation.classList.remove('is-open');
   }
 
-  const saved = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  applyTheme(saved);
+  toggle.addEventListener('click', function () {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    navigation.classList.toggle('is-open', !isOpen);
+  });
 
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      const cur = root.classList.contains('theme-dark') ? 'dark' : 'light';
-      applyTheme(cur === 'dark' ? 'light' : 'dark');
-    });
-  }
+  navigation.addEventListener('click', function (event) {
+    if (event.target.closest('a')) closeMenu();
+  });
 
-  // Alerts: auto-dismiss and manual dismiss
-  document.querySelectorAll('#alerts .alert').forEach(function (el) {
-    const dismiss = el.querySelector('.dismiss');
-    if (dismiss) dismiss.addEventListener('click', function () { el.remove(); });
-    // Auto hide after 5 seconds
-    setTimeout(function () { if (el.parentNode) el.remove(); }, 5000);
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeMenu();
+      toggle.focus();
+    }
   });
 });

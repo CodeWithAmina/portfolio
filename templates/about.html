@@ -1,87 +1,79 @@
 {% extends 'base.html' %}
 
+{% block title %}About — Amina Muhammed{% endblock %}
+{% block description %}Learn about Amina Muhammed’s education, interests, and approach to software development.{% endblock %}
+
 {% block content %}
-<section class="about">
-  <div class="about-header">
-    <h1>About Me</h1>
-    <p class="lead">
-      Motivated MCA student with practical experience in Python, Django, PHP, and front-end technologies.
-      Skilled in developing dynamic, user-focused web applications. Eager to contribute to real-world software
-      development roles.
-    </p>
-    <div class="contact-info-bar">
-      <span>📞 8921021202</span>
-      <span>📍 Kochi, Kerala</span>
-      <span>✉️ aminamuhammed9060@gmail.com</span>
+<section class="page-hero container">
+  <p class="section-kicker">A little context</p>
+  <h1>Learning by<br><span class="serif-accent">making things.</span></h1>
+  <p>I’m Amina, an MCA student who enjoys building practical software and exploring how thoughtful technology can make everyday experiences better.</p>
+</section>
+
+<section class="section container about-layout">
+  <div class="about-story">
+    <p class="section-kicker">My approach</p>
+    <h2>Curiosity, care,<br>and a line of code.</h2>
+    <p>My path began with a Bachelor of Computer Applications and continues through my Master of Computer Applications at Rajagiri College of Social Sciences. Along the way, I’ve explored web development, Python, mobile applications, databases, and artificial intelligence through academic and personal projects.</p>
+    <p>I like to understand the problem before reaching for a solution, keep learning as tools evolve, and build software with the people who will use it in mind.</p>
+    <p>Right now, I’m especially interested in full stack and Python development, web applications, and AI/ML.</p>
+    <a class="button button-primary" href="{{ url_for('contact') }}">Say hello <span aria-hidden="true">↗</span></a>
+  </div>
+  <aside class="about-aside">
+    <div class="about-aside-mark" aria-hidden="true">A.</div>
+    <p class="section-kicker">What I value</p>
+    <ul class="values-list">
+      <li><span>01</span>Useful, well-considered solutions</li>
+      <li><span>02</span>Clear and maintainable code</li>
+      <li><span>03</span>Learning through building</li>
+    </ul>
+  </aside>
+</section>
+
+<section class="section education-section">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="section-kicker">Academic background</p><h2>Education</h2></div>
+      <p class="section-aside">Foundations that keep growing.</p>
+    </div>
+    <div class="education-timeline">
+      <article class="timeline-entry">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <p class="section-kicker">Current · Final semester</p>
+        <h3>Master of Computer Applications</h3>
+        <p>Rajagiri College of Social Sciences, Kalamassery</p>
+      </article>
+      <article class="timeline-entry">
+        <span class="timeline-dot" aria-hidden="true"></span>
+        <p class="section-kicker">Undergraduate</p>
+        <h3>Bachelor of Computer Applications</h3>
+        <p>KMEA College of Arts and Science, Pukkattupady</p>
+      </article>
     </div>
   </div>
+</section>
 
-  <div class="resume-section">
-    <h2>Education</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <span class="date">2025 - 2027</span>
-        <div class="content">
-          <h3>Master of Computer Application</h3>
-          <p class="institution">MG University | Rajagiri College Of Social Science</p>
-          <p>Building a solid foundation in programming and web technologies.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="date">2022 - 2025</span>
-        <div class="content">
-          <h3>Bachelor of Computer Application</h3>
-          <p class="institution">MG University | KMEA College Of Arts & Science</p>
-          <p>Skills in programming, database management, and web development.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="date">2020 - 2022</span>
-        <div class="content">
-          <h3>Senior Secondary (CBSE)</h3>
-          <p class="institution">Al-Ameen Public School</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <span class="date">2020</span>
-        <div class="content">
-          <h3>High School (CBSE)</h3>
-          <p class="institution">Al-Ameen Public School</p>
-        </div>
-      </div>
-    </div>
+<section class="section container skills-section about-skills">
+  <div class="section-heading">
+    <div><p class="section-kicker">Technologies</p><h2>My toolkit</h2></div>
   </div>
-
-  <div class="resume-section">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3>Technical Skills</h3>
-        <ul class="tech-list">
-          <li>Programming: Python, PHP</li>
-          <li>Web Frameworks: Flask</li>
-          <li>Frontend: HTML, CSS</li>
-          <li>Database: SQL (MySQL, SQLite)</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <h3>Professional Skills</h3>
-        <ul class="tech-list">
-          <li>Teamwork</li>
-          <li>Problem Solving</li>
-          <li>Leadership</li>
-          <li>Communication</li>
-        </ul>
-      </div>
-    </div>
+  <div class="skill-grid">
+    {% for category in skill_categories %}
+    <article class="skill-group">
+      <span class="skill-number">{{ '%02d'|format(loop.index) }}</span>
+      <h3>{{ category.name }}</h3>
+      <ul class="tag-list">
+        {% for skill in category.skills %}<li>{{ skill }}</li>{% endfor %}
+      </ul>
+    </article>
+    {% endfor %}
   </div>
+</section>
 
-  <div class="resume-section">
-    <h2>Certifications</h2>
-    <div class="certification-card">
-      <h3>Graphic Design</h3>
-      <p>MSME Technology Development Centre</p>
-    </div>
+<section class="experience-band">
+  <div class="container experience-inner">
+    <div><p class="section-kicker">Experience</p><h2>Open to what’s next.</h2></div>
+    <p>I’m currently building my experience through academic and personal software projects, and I’m open to internship and early-career opportunities. I’ll share professional experience here as it takes shape.</p>
   </div>
 </section>
 {% endblock %}
